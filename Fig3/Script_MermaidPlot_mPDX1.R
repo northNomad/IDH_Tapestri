@@ -42,7 +42,7 @@ PM305256_root -> PM305256_IDH1
 
 ### PM246514
 
-PM246514_WT1 [label='<I>WT1</I>@^{R462W}<br/>N=4', color='#FEE7D2', width=0.006762468]
+PM246514_WT1 [label='<I>WT1</I>@^{R467W}<br/>N=4', color='#FEE7D2', width=0.006762468]
 PM246514_IDH1 [label='<I>IDH1</I>@^{R132H}<br/>N=550', color='#FEE7D2', width=0.929839391]
 PM246514_NPM1 [label='<I>NPM1</I>c@^{+}<br/>N=270', color='#FEE7D2', width=0.456466610]
 PM246514_FLT3 [label='<I>FLT3</I>-ITD@^{ }<br/>N=359', color='#FEE7D2', width=0.606931530]
@@ -141,7 +141,7 @@ PM305256_root -> PM305256_IDH1
 
 ### PM246514
 
-PM246514_WT1 [label='<I>WT1</I>@^{R462W}<br/>N=4', color='#FEE7D2']
+PM246514_WT1 [label='<I>WT1</I>@^{R467W}<br/>N=4', color='#FEE7D2']
 PM246514_IDH1 [label='<I>IDH1</I>@^{R132H}<br/>N=550', color='#FEE7D2']
 PM246514_NPM1 [label='<I>NPM1</I>c@^{+}<br/>N=270', color='#FEE7D2']
 PM246514_FLT3 [label='<I>FLT3</I>-ITD@^{ }<br/>N=359', color='#FEE7D2']

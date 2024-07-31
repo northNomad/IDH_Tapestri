@@ -591,7 +591,7 @@ pdxa_row_labels <- c(
   EZH2_C552R="*JAK2*^C552R",
   EZH2_P527H="*JAK2*^P527H",
   RUNX1_R320Ter="*RUNX1*^R320*",
-  WT1_R462W="*WT1*^R462W",
+  WT1_R462W="*WT1*^R467W",
   NRAS_G13D="*NRAS*^G13D"
 )
 
