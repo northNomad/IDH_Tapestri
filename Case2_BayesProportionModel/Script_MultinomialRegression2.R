@@ -38,9 +38,9 @@ d_n <- read_rds("../Case2_BayesCellCountModel/df_posterior_nCells_8Chains_5e4Ite
 ##       Posterior of frequency per clone across treatments stored as an R object.
 ##
 ## (4): 'p_hm_ClonesAcrossSamples_mixed.svg'
-##       This is Figure 4D
+##       This is Figure 4C
 ## (5): 'p_mPDX_l2fc_ridge.png'
-##       This is Figure 4E
+##       This is Figure 4D
 
 
 #Count clones

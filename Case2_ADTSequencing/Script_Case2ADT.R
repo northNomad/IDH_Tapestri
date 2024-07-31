@@ -21,7 +21,8 @@ ls_sce_filtered <- read_rds("../Case2_QC/ls_sce_filtered_mixed.rds")
 
 ## What the script outputs:
 ## (1): 'p_pseudobulk_volcano.png' 
-##       This is Figure 4F
+##       This is Figure 4E
+##
 ## (2): 'p_hm_idh1_bulk.svg'
 ## (3): 'p_hm_idh1_clone3.svg'
 ## (4): 'p_hm_idh1_clone4.svg'
@@ -29,7 +30,7 @@ ls_sce_filtered <- read_rds("../Case2_QC/ls_sce_filtered_mixed.rds")
 ## (6): 'p_hm_idh2_clone5.svg'
 ## (7): 'p_hm_idh2_clone6.svg'
 ## (8): 'p_hm_idh2_clone7.svg'
-##       These are Figure 4G.
+##       These are Figure 4F.
 
 ls_sce_filtered %>% 
   lapply(function(x){
