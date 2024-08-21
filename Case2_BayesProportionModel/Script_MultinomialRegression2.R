@@ -7,6 +7,7 @@ library(tapestri.tools)
 library(patchwork)
 library(ggsci)
 library(ggridges)
+library(circlize)
 library(rethinking)
 library(cmdstanr)
 library(ComplexHeatmap)
@@ -143,7 +144,7 @@ for(i in 1:nrow(d_percent)){
     d_label[i, j] <- label
   }
 }
-
+col_fun <- colorRamp2(c(-3, 0, 3), c("blue", "white", "red"))
 d_hm %>% 
   scale() %>% 
   Heatmap(cluster_rows=FALSE, 
@@ -157,12 +158,13 @@ d_hm %>%
           column_labels = c("Vehicle", "Ivosidenib", "Enasidenib", "Ivo. + Ena."),
           column_names_rot = -30, 
           row_names_side = "left", 
-          column_names_side = "top"
-          ) -> p_hm_ClonesAcrossSamples_mixed
-p_hm_ClonesAcrossSamples_mixed
+          column_names_side = "top",
+          col = col_fun
+          ) -> p_hm_ClonesAcrossSamples_mixed_v2
+p_hm_ClonesAcrossSamples_mixed_v2
 
 svg(filename = "p_hm_ClonesAcrossSamples_mixed.svg", width = 5.35, height = 4.8)
-p_hm_ClonesAcrossSamples_mixed
+p_hm_ClonesAcrossSamples_mixed_v2
 dev.off()
 
 
@@ -284,7 +286,9 @@ ggsave("p_mPDX_l2fc_ridge.png", p_mPDX_l2fc_ridge,
        width=6.2, height = 3.4, units = "in", dpi="retina"
        )
 
-# > sessionInfo()
+
+# -------------------------------------------------------------------------
+# sessionInfo()
 # R version 4.4.0 (2024-04-24 ucrt)
 # Platform: x86_64-w64-mingw32/x64
 # Running under: Windows 10 x64 (build 19045)
@@ -293,8 +297,9 @@ ggsave("p_mPDX_l2fc_ridge.png", p_mPDX_l2fc_ridge,
 # 
 # 
 # locale:
-#   [1] LC_COLLATE=English_United States.utf8  LC_CTYPE=English_United States.utf8    LC_MONETARY=English_United States.utf8
-# [4] LC_NUMERIC=C                           LC_TIME=English_United States.utf8    
+#   [1] LC_COLLATE=English_United States.utf8  LC_CTYPE=English_United States.utf8   
+# [3] LC_MONETARY=English_United States.utf8 LC_NUMERIC=C                          
+# [5] LC_TIME=English_United States.utf8    
 # 
 # time zone: America/New_York
 # tzcode source: internal
@@ -303,36 +308,38 @@ ggsave("p_mPDX_l2fc_ridge.png", p_mPDX_l2fc_ridge,
 #   [1] grid      parallel  stats4    stats     graphics  grDevices utils     datasets  methods   base     
 # 
 # other attached packages:
-#   [1] readxl_1.4.3                ComplexHeatmap_2.20.0       rethinking_2.40             posterior_1.5.0            
-# [5] cmdstanr_0.8.0              ggsci_3.1.0                 patchwork_1.2.0             tapestri.tools_0.0.9000    
-# [9] SingleCellExperiment_1.26.0 SummarizedExperiment_1.34.0 Biobase_2.64.0              MatrixGenerics_1.16.0      
-# [13] matrixStats_1.3.0           rtracklayer_1.64.0          rhdf5_2.48.0                rentrez_1.2.3              
-# [17] ggridges_0.5.6              GenomicRanges_1.56.0        GenomeInfoDb_1.40.1         IRanges_2.38.0             
-# [21] S4Vectors_0.42.0            BiocGenerics_0.50.0         magrittr_2.0.3              maftools_2.20.0            
-# [25] compositions_2.0-8          data.table_1.15.4           lubridate_1.9.3             forcats_1.0.0              
-# [29] stringr_1.5.1               dplyr_1.1.4                 purrr_1.0.2                 readr_2.1.5                
-# [33] tidyr_1.3.1                 tibble_3.2.1                ggplot2_3.5.1               tidyverse_2.0.0            
+#   [1] ComplexHeatmap_2.20.0       rethinking_2.40             posterior_1.5.0            
+# [4] cmdstanr_0.8.0              ggsci_3.1.0                 patchwork_1.2.0            
+# [7] tapestri.tools_0.0.9000     SingleCellExperiment_1.26.0 SummarizedExperiment_1.34.0
+# [10] Biobase_2.64.0              MatrixGenerics_1.16.0       matrixStats_1.3.0          
+# [13] rtracklayer_1.64.0          rhdf5_2.48.0                rentrez_1.2.3              
+# [16] ggridges_0.5.6              GenomicRanges_1.56.0        GenomeInfoDb_1.40.1        
+# [19] IRanges_2.38.0              S4Vectors_0.42.0            BiocGenerics_0.50.0        
+# [22] magrittr_2.0.3              maftools_2.20.0             compositions_2.0-8         
+# [25] data.table_1.15.4           lubridate_1.9.3             forcats_1.0.0              
+# [28] stringr_1.5.1               dplyr_1.1.4                 purrr_1.0.2                
+# [31] readr_2.1.5                 tidyr_1.3.1                 tibble_3.2.1               
+# [34] ggplot2_3.5.1               tidyverse_2.0.0             circlize_0.4.16            
 # 
 # loaded via a namespace (and not attached):
 #   [1] bitops_1.0-7             rlang_1.1.3              clue_0.3-65              GetoptLong_1.0.5        
 # [5] compiler_4.4.0           loo_2.7.0                png_0.1-8                vctrs_0.6.5             
-# [9] shape_1.4.6.1            pkgconfig_2.0.3          crayon_1.5.2             backports_1.5.0         
-# [13] XVector_0.44.0           labeling_0.4.3           utf8_1.2.4               Rsamtools_2.20.0        
-# [17] tzdb_0.4.0               UCSC.utils_1.0.0         ps_1.7.6                 xfun_0.44               
-# [21] zlibbioc_1.50.0          jsonlite_1.8.8           rhdf5filters_1.16.0      DelayedArray_0.30.1     
-# [25] Rhdf5lib_1.26.0          BiocParallel_1.38.0      cluster_2.1.6            R6_2.5.1                
-# [29] stringi_1.8.4            RColorBrewer_1.1-3       DNAcopy_1.78.0           cellranger_1.1.0        
-# [33] iterators_1.0.14         Rcpp_1.0.12              knitr_1.46               Matrix_1.7-0            
-# [37] splines_4.4.0            timechange_0.3.0         tidyselect_1.2.1         rstudioapi_0.16.0       
-# [41] abind_1.4-5              yaml_2.3.8               doParallel_1.0.17        codetools_0.2-20        
-# [45] curl_5.2.1               processx_3.8.4           lattice_0.22-6           plyr_1.8.9              
-# [49] withr_3.0.0              coda_0.19-4.1            survival_3.5-8           bayesm_3.1-6            
-# [53] circlize_0.4.16          Biostrings_2.72.0        pillar_1.9.0             tensorA_0.36.2.1        
-# [57] foreach_1.5.2            checkmate_2.3.1          distributional_0.4.0     generics_0.1.3          
-# [61] RCurl_1.98-1.14          hms_1.1.3                munsell_0.5.1            scales_1.3.0            
-# [65] glue_1.7.0               tools_4.4.0              BiocIO_1.14.0            robustbase_0.99-2       
-# [69] GenomicAlignments_1.40.0 mvtnorm_1.2-5            XML_3.99-0.16.1          colorspace_2.1-0        
-# [73] GenomeInfoDbData_1.2.12  restfulr_0.0.15          cli_3.6.2                fansi_1.0.6             
-# [77] S4Arrays_1.4.1           gtable_0.3.5             DEoptimR_1.1-3           digest_0.6.35           
-# [81] SparseArray_1.4.8        farver_2.1.2             rjson_0.2.21             lifecycle_1.0.4         
-# [85] httr_1.4.7               GlobalOptions_0.1.2      MASS_7.3-60.2     
+# [9] pkgconfig_2.0.3          shape_1.4.6.1            crayon_1.5.2             backports_1.5.0         
+# [13] XVector_0.44.0           utf8_1.2.4               Rsamtools_2.20.0         tzdb_0.4.0              
+# [17] UCSC.utils_1.0.0         ps_1.7.6                 xfun_0.44                zlibbioc_1.50.0         
+# [21] jsonlite_1.8.8           rhdf5filters_1.16.0      DelayedArray_0.30.1      Rhdf5lib_1.26.0         
+# [25] BiocParallel_1.38.0      cluster_2.1.6            R6_2.5.1                 stringi_1.8.4           
+# [29] RColorBrewer_1.1-3       DNAcopy_1.78.0           iterators_1.0.14         Rcpp_1.0.12             
+# [33] knitr_1.46               Matrix_1.7-0             splines_4.4.0            timechange_0.3.0        
+# [37] tidyselect_1.2.1         rstudioapi_0.16.0        abind_1.4-5              yaml_2.3.8              
+# [41] doParallel_1.0.17        codetools_0.2-20         curl_5.2.1               processx_3.8.4          
+# [45] lattice_0.22-6           plyr_1.8.9               withr_3.0.0              coda_0.19-4.1           
+# [49] survival_3.5-8           bayesm_3.1-6             Biostrings_2.72.0        pillar_1.9.0            
+# [53] tensorA_0.36.2.1         foreach_1.5.2            checkmate_2.3.1          distributional_0.4.0    
+# [57] generics_0.1.3           RCurl_1.98-1.14          hms_1.1.3                munsell_0.5.1           
+# [61] scales_1.3.0             glue_1.7.0               tools_4.4.0              BiocIO_1.14.0           
+# [65] robustbase_0.99-2        GenomicAlignments_1.40.0 mvtnorm_1.2-5            XML_3.99-0.16.1         
+# [69] colorspace_2.1-0         GenomeInfoDbData_1.2.12  restfulr_0.0.15          cli_3.6.2               
+# [73] fansi_1.0.6              S4Arrays_1.4.1           gtable_0.3.5             DEoptimR_1.1-3          
+# [77] digest_0.6.35            SparseArray_1.4.8        rjson_0.2.21             lifecycle_1.0.4         
+# [81] httr_1.4.7               GlobalOptions_0.1.2      MASS_7.3-60.2     
