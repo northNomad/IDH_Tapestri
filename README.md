@@ -45,7 +45,7 @@ Each cell that passed quality control is attached to one clone of the correspond
 
 **Bayesian modelling of human cell number in xenotransplanted animals**
 
-We model the number of human cells N_ij collected at timepoint i under treatment j as following a gamma-poisson distribution with mean μ_ij and dispersion ϕ_i that accounts for experimental variability of each timepoint i. We use a logarithmic link log(μ_ij )=μ_0j+bT[j], where μ_0j is the grand mean and bT[j] is the coefficient for treatment j. The treatments effects bT is represented using a multilevel model with prior bT~Normal(bT_μ,bT_σ ) and hyperpriors bT_μ~Normal(0,7) and bT_σ~Normal(0,2). We assume a set of weakly informative priors μ_0j~Uniform(0,17.7) and ϕ_i~Uniform(0,1) that cover a wide range of possible outcomes within expectation.
+We model the number of human cells $N_{ij}$ collected at timepoint $i$ under treatment $j$ as following a gamma-Poisson distribution with mean $\mu_{ij}$ and dispersion $\phi_{i}$ that accounts for experimental variability of each timepoint $i$. We use a logarithmic link $log(\mu_{ij}) = \mu_{0i} + bT[j]$, where $mu_{0i}$ is the grand mean and $bT[j]$ is the coefficient for treatment $j$.  The treatments effects $bT$ is represented using a multilevel model with prior $bT ~\sim Normal(bT_{\mu}, bT_{\sigma})$ and hyperpriors $bT_{\mu} ~\sim Normal(0, 7)$ $bT_{\sigma} ~\sim Normal(0, 2)$. We assume a set of weakly informative priors μ_0j~Uniform(0,17.7) and ϕ_i~Uniform(0,1) that cover a wide range of possible outcomes within expectation.
 
 **Bayesian modelling of clonal proportion across treatments**
 
